@@ -1,5 +1,10 @@
 import { AnimatePresence } from 'framer-motion';
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { config } from "@fortawesome/fontawesome-svg-core";
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
+
+config.autoAddCss = false;
 
 const GlobalStyle = createGlobalStyle`
     *{

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
+import Layout from '../components/Layout'
 
 function HomePage() {
     return (
@@ -8,15 +9,13 @@ function HomePage() {
                 <title>Ecommerce</title>
 
             </Head>
-            <Title>Ecommerce</Title>
+            <Layout>
+
+            </Layout>
         </>
     )
 }
 
 export default HomePage;
 
-//Components
-const Title = styled.h1`
-    color:red;
-`
 
