@@ -1,11 +1,26 @@
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { BiShoppingBag, BiSearchAlt2 } from 'react-icons/bi'
 import Link from 'next/link'
 
 
 const NavBar = () => {
+    const [scrollY, setScrollY] = useState(0);
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+
+    }, []);
     return (
-        <Container>
+        <Container scrollY={scrollY}>
             <header>
                 <div className="left-section">
                     <div className="links">
@@ -59,24 +74,25 @@ export default NavBar
 //Componentes
 const Container = styled.div`
     min-height:40px;
-    background-color:#fff;
+    background-color:transparent;
     display:flex;
     width:100%;
+    color :${props => props.scrollY > 0 ? "#000" : "#fff"};
     font-family: 'Courier Prime',monospace;
-    position:sticky;
-    top:0;
     
     
     header{
         display:flex;
         align-items:center;
         justify-content:space-between;
-        padding:20px 60px;
+        padding:10px 20px;
         width:100%;
         font-size: 0.99rem;
+        position:sticky;
+        top:0;
             a{
                 text-decoration:none;
-                color:#000;
+                color :${props => props.scrollY > 0 ? "#000" : "#fff"};
                 margin:5px 10px;
                 letter-spacing:-2px;
             }
@@ -112,7 +128,6 @@ const Container = styled.div`
                 }
                 span{
                     margin:2px;
-                    color:#000;
                     font-size: 1.7rem;
                 }
             }
@@ -167,7 +182,7 @@ const Container = styled.div`
         margin-bottom: 8px;
         position: relative;
         
-        background: #000;
+        background:${props => props.scrollY > 0 ? "#000" : "#fff"};
         border-radius: 3px;
         
         z-index: 1;
@@ -210,7 +225,7 @@ const Container = styled.div`
         margin: -100px 0 0 -50px;
         padding: 50px;
         padding-top: 125px;
-        
+
         background: #ededed;
         list-style-type: none;
         -webkit-font-smoothing: antialiased;
