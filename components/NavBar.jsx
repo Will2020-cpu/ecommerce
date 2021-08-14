@@ -7,24 +7,33 @@ const NavBar = () => {
     return (
         <Container>
             <header>
-                
-                <nav role="navigation">
-                    <div id="menuToggle">
-
-                        <input type="checkbox" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                        <ul id="menu">
-                            <a href="#"><li>Home</li></a>
-                            <a href="#"><li>About</li></a>
-                            <a href="#"><li>Info</li></a>
-                            <a href="#"><li>Contact</li></a>
-                            <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
-                        </ul>
+                <div className="left-section">
+                    <div className="links">
+                        <span><Link href="/"><a>Shop</a></Link></span>
+                        <span><Link href="/"><a>Hacer una orden</a></Link></span>
+                        <span><Link href="/"><a>Sobre nosotros</a></Link></span>
+                        <span><Link href="/"><a>Estilos </a></Link></span>
                     </div>
-                </nav>
+
+                    <nav className="nav-mobile" role="navigation">
+                        <div id="menuToggle">
+
+                            <input type="checkbox" />
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                            <ul id="menu">
+                                <a href="#"><li>Home</li></a>
+                                <a href="#"><li>About</li></a>
+                                <a href="#"><li>Info</li></a>
+                                <a href="#"><li>Contact</li></a>
+                                <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+
                 <div className="logo"><h1>tienda</h1></div>
                 <div className="right-section">
                     <div className="icons">
@@ -32,6 +41,8 @@ const NavBar = () => {
                         <span><BiShoppingBag /></span>
                     </div>
                     <div className="links">
+                        <span><Link href="/"><a>Ingresar</a></Link></span>
+                        <span><Link href="/"><a>Registrarse</a></Link></span>
                         <span><Link href="/"><a>Buscar</a></Link></span>
                         <span><Link href="/"><a>Bolsa[]</a></Link></span>
                     </div>
@@ -52,27 +63,46 @@ const Container = styled.div`
     display:flex;
     width:100%;
     font-family: 'Courier Prime',monospace;
+    position:sticky;
+    top:0;
     
     
     header{
         display:flex;
         align-items:center;
         justify-content:space-between;
-        padding:15px;
+        padding:20px 60px;
         width:100%;
-
-        .logo{
-            font-family: 'Style Script',cursive;
-        }
-
-        .right-section{
-            font-size: 0.875rem;
+        font-size: 0.99rem;
             a{
                 text-decoration:none;
                 color:#000;
-                margin:5px;
+                margin:5px 10px;
+                letter-spacing:-2px;
             }
 
+        .logo{
+            font-family: 'Style Script',cursive;
+            flex-shrink:1;
+        }
+
+        .left-section{
+            .links{
+                display:none;
+
+            }
+            @media(min-width:1100px){
+                .nav-mobile{
+                    display:none;
+                }
+                .links{
+                    display:flex;
+                }
+            }
+        }
+
+
+        .right-section{
             .icons{
                 display:flex;
                 align-items:center;
